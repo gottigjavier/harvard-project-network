@@ -1,0 +1,104 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Social Network{% endblock %}</title>
+        <!-- Detect Browser Name -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bowser/1.9.4/bowser.min.js"></script>
+
+        <script src="https://kit.fontawesome.com/d26bb3691d.js" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
+        <link href="{% static 'network/styles.css' %}" rel="stylesheet">
+        {% block script %}
+        {% endblock %}
+    </head>
+    <body>
+
+        <nav id="my-nav" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <a class="navbar-brand" href="#">Network</a>
+            
+
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav mr-auto">
+                {% if user.is_authenticated %}
+                    <img src='../network/media/{{ user.image }}' width="30" height="30">
+                    <li class="nav-item">
+                        <input id="box-user" type="hidden" value={{ user }}>
+                        <input id="box-user-id" type="hidden" value={{ request.user.id }}> 
+                        <a id="user-link" class="nav-link" onclick=profiles_box('{{ user.username }}') href="#"><strong>{{ user.username }}</strong></a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><strong id="user-link">Visitor</strong></a>
+                        <input id="box-user" type="hidden" value="Visitor"> 
+                        <input id="box-user-id" type="hidden" value="Visitor">
+                    </li>
+                {% endif %}
+                <li id="all-posts" class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">All Posts</a>
+                </li>
+                {% if user.is_authenticated %}
+                    <li id="all-authors" class="nav-item">
+                        <a class="nav-link" href="#">All Authors</a>
+                    </li>
+                    <li id="following" class="nav-item">
+                        <a class="nav-link" href="#">Following</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+                </ul>
+            </div>
+        </nav>
+        {% if user.is_authenticated %}
+        <button class="open-button" onclick="new_post()">New 
+            <br> post</button>
+        
+        <div class="form-popup" id="myForm">
+            <form action="#" id="my-form" class="form-container">
+                <div>
+                    <h3 id="post-title"></h3>   
+                </div>
+                <div>      
+                    <textarea id="post" class="post-text" placeholder="550 chars max" name="post" maxlength="550" required></textarea>
+                </div>
+                <div id="form-buttons">                
+                    <button type="submit" id="send" class="post-btn" title="Send">
+                        <i class="fas fa-share"></i>
+                    </button>
+                    <button type="button" id="close" class="post-btn cancel" title="Close" onclick="closeForm()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+        {% endif %}
+        
+        <div class="body">
+            {% block body %}
+            {% endblock %}
+        </div>
+
+    </body>
+</html>

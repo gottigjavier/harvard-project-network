@@ -1,0 +1,224 @@
+#my-nav{
+  z-index: 9;
+  opacity: 0.8;
+}
+
+#my-nav:hover{
+  opacity: 1;
+}
+
+#posts_view {
+    background-color: snow;
+}
+
+.body {
+  margin-top: 5rem;
+}
+
+/*  "delete post" event, visual effect */
+@keyframes hide {
+  0% {
+    opacity: 1;
+    height: 100%;
+    line-height: 100%;
+  }
+  80% {
+    opacity: 0;
+    height: 100%;
+    line-height: 100%;
+  }
+  100% {
+    opacity: 0;
+    height: 0;
+    line-height: 0;
+  }
+}
+
+.post-style {
+  background-color:rgb(244, 248, 248) !important;
+  animation-name: hide !important;
+  animation-duration: 2s !important;
+  animation-fill-mode: forwards !important;
+  animation-play-state: paused;
+  
+}
+
+.text-post {
+  font-size: 1rem;
+  line-height: 150%;
+}
+
+/* icons styles */
+.delete-event{
+opacity: 0.8;
+color: tomato;
+}
+
+.delete-event:hover{
+  opacity: 1;
+  color: rgb(231, 15, 7);
+  cursor: pointer;
+}
+
+.edit-event{
+  color: blue;
+}
+
+.edit-event:hover{
+  color:darkblue;
+  cursor: pointer;
+}
+
+img, .profile-icon{
+  font-size: 1.5rem;
+  color: rgb(223, 113, 35);
+  border-radius: 40%;
+}
+
+.profile-name:hover{
+  color: rgb(139, 59, 1);
+  cursor: pointer;
+}
+
+.current-user{
+  background-color: rgb(223, 240, 240) !important;
+  font-size: 1.5rem;
+  color: rgb(223, 113, 35);
+}
+
+.user-style {
+  width: 33% !important;
+  display: inline-flex;
+  
+}
+
+.user-row {
+  display: inline-flex;
+}
+
+.user-icon {
+width: 50px;
+height: 50px;
+  font-size: 3rem;
+  border-radius: 50%;
+}
+
+.span-icon{
+  font-size: 1.3rem;
+}
+
+.span-icon:hover{
+    color: tomato;
+    cursor: pointer;
+}
+
+.icon-m, .follow-icon{
+  font-size: 1.6rem;
+}
+
+.follow-icon:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.span-red {
+    color: rgb(243, 61, 61);
+}
+
+.span-black {
+    color: black;
+}
+
+.span-green {
+    color: lawngreen !important;
+}
+
+.span-blue {
+    font-size: 1.8rem;
+    color: dodgerblue;
+}
+.span-blue:hover {
+    opacity: 1;
+}
+
+.span-orange {
+    color: rgb(245, 103, 9);
+}
+
+/* Button used to open the contact form - fixed at the page */
+.open-button {
+    background-color: blueviolet;
+    color: white;
+    padding: 8px 15px;
+    border: solid 2px rgb(56, 52, 52);
+    border-radius: 10%;
+    cursor: pointer;
+    opacity: 0.7;
+    position: fixed;
+    bottom: 31%;
+    right: 8px;
+    width:  70px;
+  }
+  
+  /* The popup form - hidden by default */
+  .form-popup {
+    opacity: 0.9;
+    display: none;
+    position: fixed;
+    bottom: 30%;
+    right: 5px;
+    border: 3px solid #f1f1f1;
+    z-index: 15;
+  }
+  
+  /* Add styles to the form container */
+  .form-container {
+    width: 900px;
+    padding: 10px;
+    background-color: white;
+  }
+  
+  /* Full-width input field */
+  .form-container .post-text{
+    color: rgb(7, 4, 165);
+    width: 100%;
+    height: 200px;
+    padding: 5px;
+    margin: 5px 0 2px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  /* When the inputs get focus, do something */
+  .form-container .post-text{
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  /* Set a style for the submit button */
+  .form-container .post-btn {
+    background-color: mediumseagreen;
+    color: white;
+    padding: 3px 2px;
+    border: solid 3px gray;
+    border-radius: 25%;
+    cursor: pointer;
+    width: 8%;
+    height: 6%;
+    margin-bottom:5px;
+    opacity: 0.8;
+  }
+  
+  /* Add a red background color to the cancel button */
+  .form-container .cancel {
+    background-color: red;
+  }
+
+  #form-buttons{
+    right: 5px !important;
+  }
+  
+  /* Add some hover effects to buttons */
+  .form-container .btn:hover, .form-popup:hover, .open-button:hover {
+    opacity: 1;
+  }

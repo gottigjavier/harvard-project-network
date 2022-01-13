@@ -1,0 +1,39 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+
+
+
+    <div id='profiles-container' class="container p-2 my-2 border" >
+        
+    </div>
+    <div id='posts-container' class="container p-2 my-2 border">
+
+    </div>
+
+
+    
+    <div id="pagination-container">
+        <h5 id="current-page" class="text-center"></h5>
+        <nav aria-label="Pagination Nav">
+            <ul class="pagination pagination-lg justify-content-center">
+                <li id="prev-page" class="page-item" title="Previous" onclick="prev_page()"><a class="page-link" href="#"> &laquo; </a></li>
+                <li class="page-item align-bottom"></li>
+                <li id="next-page" class="page-item" title="Next" onclick="next_page()"><a class="page-link" href="#"> &raquo; </a></li>
+            </ul>
+        </nav>
+    </div>
+
+
+
+
+
+    
+
+    {% endblock %}
+
+{% block script %}
+    <script src="{% static 'network/index.js' %}"></script>
+{% endblock %}
